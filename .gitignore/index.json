@@ -12,65 +12,11 @@ var bot = new Discord.Client();
 var prefix = ("!");
 
 bot.on('ready', () => {
-    bot.user.setPresence({ game: { name: '[!Spy] <from 🔱 𝓢𝓟𝓨 🔱>', type: 0}})
+    bot.user.setPresence({ game: { name: '[!Mystik] <🔱 𝓢𝓟𝓨 🔱>', type: 0}})
     console.log("Bot pret");
 });
 
-bot.login('NTIyMDc3OTg0NTQ3NjY3OTc4.DvFxrQ.B83NPKtFBRZDqYBwLkopUjgqsW4');
-
-let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-if(!kUser) return message.channel.send("Can't find user!");
-let kReason = args.join(" ").slice(22);
-if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
-if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
-
-let kickEmbed = new Discord.RichEmbed()
-.setDescription("~Kick~")
-.setColor("#e56b00")
-.addField("Kicked User", `${kUser} with ID ${kUser.id}`)
-.addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
-.addField("Kicked In", message.channel)
-.addField("Tiime", message.createdAt)
-.addField("Reason", kReason);
-
-let kickChannel = message.guild.channels.find(`name`, "incidents");
-if(!kickChannel) return message.channel.send("Can't find incidents channel.");
-
-message.guild.member(kUser).kick(kReason);
-kickChannel.send(kickEmbed);
-
-return;
-}
-
-if(cmd === `${prefix}ban`){
-
-let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-if(!bUser) return message.channel.send("Can't find user!");
-let bReason = args.join(" ").slice(22);
-if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
-if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
-
-let banEmbed = new Discord.RichEmbed()
-.setDescription("~Ban~")
-.setColor("#bc0000")
-.addField("Banned User", `${bUser} with ID ${bUser.id}`)
-.addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
-.addField("Banned In", message.channel)
-.addField("Time", message.createdAt)
-.addField("Reason", bReason);
-
-let incidentchannel = message.guild.channels.find(`name`, "incidents");
-if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
-
-message.guild.member(bUser).ban(bReason);
-incidentchannel.send(banEmbed);
-
-
-return;
-}
-
-
-if(cmd === `${prefix}report`){
+bot.login('NTIyNDA4MTE2Mjc3NjA4NDgx.DvKkOg.tD7y-D7mWWTEk_32SEcGb_t1ehc');
 
 
     bot.on('message', message => {
@@ -78,10 +24,10 @@ if(cmd === `${prefix}report`){
             message.reply("")
         }
     
-        if (message.content === prefix+ "Spy"){
+        if (message.content === prefix+ "Mystik"){
             var help_embed = new Discord.RichEmbed()
                 .setColor('#B9121B')
-                .addField("Liste des commandes :"," Voici les commandes de Spy's Bot !")
+                .addField("Liste des commandes :"," Voici les commandes du Bot !")
                 .addField("!mention", "Cette commande permet de savoir son nom discord en se mentionnant.")
                 .addField("!infos", "Cette commande permet de vous informer de la procédure des nos bots.")
             message.channel.sendEmbed(help_embed);
@@ -90,9 +36,23 @@ if(cmd === `${prefix}report`){
         if (message.content === prefix+ "infos"){
             var help_embed = new Discord.RichEmbed()
                 .setColor('#AEEE00')
-                .addField("Informations :"," La procédure est très simple , vous n'avez cas demander votre bot discord en allant dans le #demande et vous allez marquer votre projet de bot , si le bot est accepté cela vous sera signalé en privé sur discord !")
+                .addField("Informations :","MystikRP est un serveur Rôleplay qui est composé d'un map personnalisé crée par Pelisma (Mappeur de MystikRP), MystikRP contient parfois ses propres addons !")
+                .addField("Nom du serveur :", "[FR] MYSTIK ROLEPLAY | Map & Addons exclus | LoloxCommunity.com")
+                .addField("IP :", "164.132.116.56:27260")
+                .addField("Gamemode :", "DarkRP")
+                .addField("Site Web :", "https://loloxcommunity.com/")
             message.channel.sendEmbed(help_embed);
         }
     
+        if (message.content === prefix+ "staff"){
+            var help_embed = new Discord.RichEmbed()
+                .setColor('#AEEE00')
+                .addField("Staff du serveur :"," MystikRP")
+                .addField("Fondateur", "Lolox")
+                .addField("Mappeur", "Pelisma")
+                .addField("Superadmins", "Shadow\n Kobralost\n Stylaxx")
+                .addField("Administrateurs", "Skyflix\n Alex Backo\n El Famoso Marvino\n 🔱 𝓢𝓟𝓨 🔱\n ChickenNuggets (Hoie)\n A Fromage de chevre")
+            message.channel.sendEmbed(help_embed);
+        }
     
     });
