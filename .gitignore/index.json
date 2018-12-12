@@ -16,7 +16,7 @@ bot.on('ready', () => {
     console.log("Bot pret");
 });
 
-bot.login('NTIyNDA4MTE2Mjc3NjA4NDgx.DvKkOg.tD7y-D7mWWTEk_32SEcGb_t1ehc');
+bot.login(process.env.TOKEN);
 
 
     bot.on('message', message => {
